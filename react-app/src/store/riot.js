@@ -25,7 +25,12 @@ export const getSummonerInfo = (gameName, tagLine) => async (dispatch) => {
 };
 
 export const getMatches = (matchIds) => async (dispatch) => {
-  const response = await fetch(`/api/riot/get_match_info`, { body: matchIds });
+  console.log("matchids", matchIds)
+  const response = await fetch(`/api/riot/get_match_info`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(matchIds)
+  });
 
   if (response.ok) {
     const data = await response.json();

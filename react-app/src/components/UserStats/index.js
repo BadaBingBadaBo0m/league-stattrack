@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getMatches } from '../../store/riot';
 import MatchContainer from '../../MatchContainer';
 
 const UserStats = () => {
   const userInfo = useSelector((state) => state.riot.userProfile);
   const matchIds = useSelector((state) => state.riot.match_ids);
+  const dispatch = useDispatch();
 
-
+  dispatch(getMatches(matchIds));
 
   return (
     <div>

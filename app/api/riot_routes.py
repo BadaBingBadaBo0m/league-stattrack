@@ -35,7 +35,7 @@ def get_match_history_ids(puuid):
 
   return match_ids.json()
 
-@riot_routes.route('/get_match_info')
+@riot_routes.route('/get_match_info', methods=["POST"])
 def get_match_info():
   """
   Return a list of all information about 20 matches
@@ -44,21 +44,23 @@ def get_match_info():
     "body": []
   }
   """
-  match_list = request.get_json()['body']
-
+  match_list = request.get_json()
+  
   matches = []
 
-  for match in match_list:
-    match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match}",
+  match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match_list[0]}",
     headers={
     "X-Riot-Token": RIOT_API_KEY
   })
-    
-    matches.append(match_info.json())
-  # match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match_id}",
+  matches.append(match_info.json())
+  print(matches)
+  # for match in match_list:
+  #   match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match}",
   #   headers={
   #   "X-Riot-Token": RIOT_API_KEY
   # })
+    
+  #   matches.append(match_info.json())
 
   return { "matches": matches }
 
@@ -76,9 +78,3 @@ def get_user_info(gameName, tagLine):
   # match_info = get_match_info(match_ids)
 
   return {"user_profile": user_profile, "match_ids": match_ids}
-
-@riot_routes.route('/get_match_info/<string:match_id>')
-def send_match_info(match_id):
-  match_info = get_match_info(match_id)
-
-  return match_info
