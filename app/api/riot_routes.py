@@ -60,7 +60,7 @@ def get_match_info():
   #   "X-Riot-Token": RIOT_API_KEY
   # })
 
-  return matches
+  return { "matches": matches }
 
 # @riot_routes.route('/get_user_puuid/<string:gameName>/<string:tagLine>')
 # # @login_required
