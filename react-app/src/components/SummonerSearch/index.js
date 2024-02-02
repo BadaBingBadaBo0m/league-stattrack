@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getSummonerMatches, useSelector } from '../../store/riot';
+import { useHistory } from 'react-router-dom';
+import { getSummonerInfo } from '../../store/riot';
 
 const SummonerSearch = () => {
   const [gameName, setGameName] = useState('');
   const [tagLine, setTagLine] = useState('');
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const checkErrors = () => {
     let errorObj = {};
@@ -31,11 +33,15 @@ const SummonerSearch = () => {
     return false;
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!checkErrors()) {
       console.log('submitting', gameName, tagLine);
-      dispatch(getSummonerMatches(gameName, tagLine));
+      const res = await dispatch(getSummonerInfo(gameName, tagLine));
+      if (res.payload) {
+        console.log(res.payload)
+        history.push(`/user-stats/${res.payload.user_info.puuid}`)
+      }
     }
   }
 
