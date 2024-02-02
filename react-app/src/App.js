@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SummonerSearch from "./components/SummonerSearch";
+import UserStats from "./components/UserStats";
 import PageNotFound from "./components/404";
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/" >
             <SummonerSearch />
+          </Route>
+          <Route path="/user-stats/:gameName/:tagLine">
+            <UserStats />
           </Route>
           <Route path="*">
             <PageNotFound />

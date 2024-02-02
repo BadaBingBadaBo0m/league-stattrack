@@ -39,8 +39,7 @@ const SummonerSearch = () => {
       console.log('submitting', gameName, tagLine);
       const res = await dispatch(getSummonerInfo(gameName, tagLine));
       if (res.payload) {
-        console.log(res.payload)
-        history.push(`/user-stats/${res.payload.user_info.puuid}`)
+        history.push(`/user-stats/${res.payload.user_info.gameName}/${res.payload.user_info.tagLine}`);
       }
     }
   }
