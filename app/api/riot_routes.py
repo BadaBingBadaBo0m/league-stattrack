@@ -23,6 +23,9 @@ def get_match_history_ids(puuid):
   return match_ids.json()
 
 def get_match_info(match_ids):
+  """
+  Return a list of all information about 20 matches
+  """
   matches = []
 
   for match in match_ids:
@@ -50,9 +53,9 @@ def send_puuid(gameName, tagLine):
 def get_user_info(gameName, tagLine):
   user_info = get_user_puuid(gameName, tagLine)
   match_ids = get_match_history_ids(user_info['puuid'])
-  match_info = get_match_info(match_ids)
+  # match_info = get_match_info(match_ids)
 
-  return {"user_info": user_info, "match_ids": match_ids, "matches": match_info}
+  return {"user_info": user_info, "match_ids": match_ids}
 
 @riot_routes.route('/get_match_info/<string:match_id>')
 def send_match_info(match_id):
