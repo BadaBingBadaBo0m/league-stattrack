@@ -1,7 +1,7 @@
-const GET_MATCHES = 'riot/GET_MATCHES';
+const GET_USER_INFO = 'riot/GET_USER_INFO';
 
 const getMatches = (matches) => ({
-  type: GET_MATCHES,
+  type: GET_USER_INFO,
   payload: matches
 });
 
@@ -19,7 +19,7 @@ export const getSummonerMatches = (gameName, tagLine) => async (dispatch) => {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case GET_MATCHES:
+    case GET_USER_INFO:
       // return { ...state, matchIds: action.payload };
       return {
         ...state,
