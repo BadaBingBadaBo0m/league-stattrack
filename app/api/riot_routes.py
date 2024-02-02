@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 import os
 from requests import get
@@ -35,13 +35,20 @@ def get_match_history_ids(puuid):
 
   return match_ids.json()
 
-def get_match_info(match_ids):
+@riot_routes.route('/get_match_info')
+def get_match_info():
   """
   Return a list of all information about 20 matches
+
+  {
+    "body": []
+  }
   """
+  match_list = request.get_json()['body']
+
   matches = []
 
-  for match in match_ids:
+  for match in match_list:
     match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match}",
     headers={
     "X-Riot-Token": RIOT_API_KEY
@@ -55,12 +62,12 @@ def get_match_info(match_ids):
 
   return matches
 
-@riot_routes.route('/get_user_puuid/<string:gameName>/<string:tagLine>')
-# @login_required
-def send_puuid(gameName, tagLine):
-  user_info = get_user_puuid(gameName, tagLine)
+# @riot_routes.route('/get_user_puuid/<string:gameName>/<string:tagLine>')
+# # @login_required
+# def send_puuid(gameName, tagLine):
+#   user_info = get_user_puuid(gameName, tagLine)
 
-  return {"puuid": user_info['puuid']}
+#   return {"puuid": user_info['puuid']}
 
 @riot_routes.route('/get_user_info/<string:gameName>/<string:tagLine>')
 def get_user_info(gameName, tagLine):
