@@ -5,7 +5,7 @@ const getUserInfo = (matches) => ({
   payload: matches
 });
 
-const initialState = { userInfo: null, riotID: null, match_ids: null };
+const initialState = { userProfile: null, match_ids: null };
 
 export const getSummonerInfo = (gameName, tagLine) => async (dispatch) => {
   const response = await fetch(`/api/riot/get_user_info/${gameName}/${tagLine}`);
@@ -24,8 +24,7 @@ export default function reducer(state = initialState, action) {
       // return { ...state, matchIds: action.payload };
       return {
         ...state,
-        userInfo: action.payload.user_info,
-        riotID: action.payload.user_info.tagLine,
+        userProfile: action.payload.user_profile,
         match_ids: action.payload.match_ids
       }
     default:
