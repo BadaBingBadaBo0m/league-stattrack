@@ -11,7 +11,7 @@ const MatchContainer = ({ match }) => {
         {
           match.info.participants.map(player => (
             <li>
-              <img src={`/dragontail-14.2.1/14.2.1/img/profileicon/${player.profileIcon}.png`} />
+              <img src={`/dragontail-14.2.1/14.2.1/img/champion/${player.championName}.png`} />
               <span>{player.riotIdGameName}</span>
             </li>
           ))
