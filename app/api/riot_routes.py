@@ -45,6 +45,7 @@ def get_match_info():
   }
   """
   match_list = request.get_json()
+  print("fetched")
   
   matches = []
 
@@ -53,7 +54,7 @@ def get_match_info():
     "X-Riot-Token": RIOT_API_KEY
   })
   matches.append(match_info.json())
-  print(matches)
+
   # for match in match_list:
   #   match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match}",
   #   headers={
@@ -63,13 +64,6 @@ def get_match_info():
   #   matches.append(match_info.json())
 
   return { "matches": matches }
-
-# @riot_routes.route('/get_user_puuid/<string:gameName>/<string:tagLine>')
-# # @login_required
-# def send_puuid(gameName, tagLine):
-#   user_info = get_user_puuid(gameName, tagLine)
-
-#   return {"puuid": user_info['puuid']}
 
 @riot_routes.route('/get_user_info/<string:gameName>/<string:tagLine>')
 def get_user_info(gameName, tagLine):
