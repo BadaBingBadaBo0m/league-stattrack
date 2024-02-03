@@ -1,0 +1,11 @@
+#match-player-list-container {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 2px 8px;
+  max-height: 88px;
+  width: 168px;
+}
+
+#match-champ-portrait {
+  width: 2rem;
+}

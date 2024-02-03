@@ -12,7 +12,7 @@ const UserStats = () => {
   useEffect(() => {
     dispatch(getMatches(matchIds));
   }, [])
-
+  if (matchData) console.log(matchData.length)
   return (
     <section>
       <div>
