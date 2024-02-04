@@ -1,11 +1,63 @@
 #match-player-list-container {
-  display: flex;
-  flex-flow: column wrap;
-  gap: 2px 8px;
-  max-height: 88px;
-  width: 168px;
+  width: 20rem;
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0px 0px;
+  grid-template-areas:
+    "lane_1 lane_6"
+    "lane_2 lane_7"
+    "lane_3 lane_8"
+    "lane_4 lane_9"
+    "lane_5 lane_10";
 }
 
-#match-champ-portrait {
-  width: 2rem;
+.lane_2 {
+  grid-area: lane_2;
+}
+
+.lane_3 {
+  grid-area: lane_3;
+}
+
+.lane_4 {
+  grid-area: lane_4;
+}
+
+.lane_5 {
+  grid-area: lane_5;
+}
+
+.lane_1 {
+  grid-area: lane_1;
+}
+
+.lane_6 {
+  grid-area: lane_6;
+}
+
+.lane_7 {
+  grid-area: lane_7;
+}
+
+.lane_8 {
+  grid-area: lane_8;
+}
+
+.lane_9 {
+  grid-area: lane_9;
+}
+
+.lane_10 {
+  grid-area: lane_10;
+}
+
+.player-list-player {
+  font-size: .9rem;
+}
+
+.match-champ-portrait {
+  width: 1.2rem;
 }
