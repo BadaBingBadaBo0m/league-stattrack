@@ -1,5 +1,5 @@
-#match-player-list-container {
-  width: 20rem;
+.match-player-list-container {
+  width: 21.5rem;
   display: grid;
   grid-auto-flow: row dense;
   grid-auto-columns: 1fr;
@@ -56,8 +56,18 @@
 
 .player-list-player {
   font-size: .9rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .match-champ-portrait {
   width: 1.2rem;
+}
+
+.match-player-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85%;
 }

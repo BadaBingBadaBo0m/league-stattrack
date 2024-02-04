@@ -13,13 +13,13 @@ const MatchContainer = ({ match }) => {
     <div>
       <h1>match</h1>
 
-      <ul id='match-player-list-container' >
+      <ul className='match-player-list-container' >
         {playerList.map(player => {
           playerCount++;
           return (
             <li className={`lane_${playerCount} player-list-player`}>
               <img className='match-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${player.championName}.png`} />
-              <span>{player.riotIdGameName}</span>
+              <span className='match-player-name'>{player.riotIdGameName}</span>
             </li>
           )
         })}

@@ -12,7 +12,7 @@ const UserStats = () => {
   useEffect(() => {
     dispatch(getMatches(matchIds));
   }, [])
-  if (matchData) console.log(matchData.length)
+
   return (
     <section>
       <div>
@@ -21,7 +21,9 @@ const UserStats = () => {
         <h1>{userInfo.name}</h1>
       </div>
 
-      <MatchList matchData={matchData} />
+      <div id='match-list-container'>
+        <MatchList matchData={matchData} />
+      </div>
 
     </section>
   )

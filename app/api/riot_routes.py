@@ -49,19 +49,19 @@ def get_match_info():
   
   matches = []
 
-  match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match_list[0]}",
-    headers={
-    "X-Riot-Token": RIOT_API_KEY
-  })
-  matches.append(match_info.json())
-
-  # for match in match_list:
-  #   match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match}",
+  # match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match_list[0]}",
   #   headers={
   #   "X-Riot-Token": RIOT_API_KEY
   # })
+  # matches.append(match_info.json())
+
+  for match in match_list:
+    match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match}",
+    headers={
+    "X-Riot-Token": RIOT_API_KEY
+  })
     
-  #   matches.append(match_info.json())
+    matches.append(match_info.json())
 
   return { "matches": matches }
 
