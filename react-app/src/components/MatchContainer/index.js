@@ -1,4 +1,5 @@
 import React from 'react';
+import queues from '../../gameData/queues.json';
 import './MatchContainer.css';
 
 const MatchContainer = ({ match }) => {
@@ -13,15 +14,20 @@ const MatchContainer = ({ match }) => {
     console.log(match)
   }
 
-  const determinQueueType = () => {
+  const printQueue = () => {
+    console.log(queues)
+  }
 
+  const determinQueueType = () => {
+    const matchingQueue = queues.find(queue => match.info.queueId === queue.queueId);
+    return matchingQueue ? matchingQueue.description : 'Queue not found';
   }
 
   return (
     <div>
       <h1>match</h1>
       <div className='match-type-and-length'>
-        <div className='match-type'>{determinQueueType}</div>
+        <div className='match-type'>{determinQueueType()}</div>
       </div>
 
       <ul className='match-player-list-container' >
@@ -38,6 +44,7 @@ const MatchContainer = ({ match }) => {
 
       <button onClick={printPlayerList}>Print player list</button>
       <button onClick={printMatch}>Print Match</button>
+      <button onClick={printQueue}>Print Queues</button>
     </div>
   )
 };

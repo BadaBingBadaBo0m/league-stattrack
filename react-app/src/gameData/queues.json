@@ -242,7 +242,7 @@
   {
     "queueId": 400,
     "map": "Summoner's Rift",
-    "description": "5v5 Draft Pick games",
+    "description": "5v5 Draft Pick",
     "notes": null
   },
   {
@@ -254,25 +254,25 @@
   {
     "queueId": 420,
     "map": "Summoner's Rift",
-    "description": "5v5 Ranked Solo games",
+    "description": "5v5 Ranked",
     "notes": null
   },
   {
     "queueId": 430,
     "map": "Summoner's Rift",
-    "description": "5v5 Blind Pick games",
+    "description": "5v5 Blind Pick",
     "notes": null
   },
   {
     "queueId": 440,
     "map": "Summoner's Rift",
-    "description": "5v5 Ranked Flex games",
+    "description": "5v5 Ranked Flex",
     "notes": null
   },
   {
     "queueId": 450,
     "map": "Howling Abyss",
-    "description": "5v5 ARAM games",
+    "description": "5v5 ARAM",
     "notes": null
   },
   {
