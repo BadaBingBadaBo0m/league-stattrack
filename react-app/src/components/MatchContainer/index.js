@@ -18,6 +18,21 @@ const MatchContainer = ({ match }) => {
     console.log(queues)
   }
 
+  const determinTimeSinceMatch = () => {
+    const currentTimeStamp = Date.now();
+    const timeDifference = currentTimeStamp - match.info.gameEndTimestamp
+    const hoursAgo = Math.floor(timeDifference / (1000 * 60 * 60));
+
+    if (hoursAgo < 1) {
+      return "Less than an hour ago";
+    } else if (hoursAgo < 24) {
+      return `${hoursAgo} hours ago`;
+    } else {
+      const daysAgo = Math.floor(hoursAgo / 24);
+      return `${daysAgo} day${daysAgo > 1 ? 's' : ''} ago`;
+    }
+  }
+
   const determinQueueType = () => {
     const matchingQueue = queues.find(queue => match.info.queueId === queue.queueId);
     return matchingQueue ? matchingQueue.description : 'Queue not found';
@@ -28,6 +43,7 @@ const MatchContainer = ({ match }) => {
       <h1>match</h1>
       <div className='match-type-and-length'>
         <div className='match-type'>{determinQueueType()}</div>
+        <div className='time-since-match'>{determinTimeSinceMatch()}</div>
       </div>
 
       <ul className='match-player-list-container' >
