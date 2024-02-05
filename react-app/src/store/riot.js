@@ -1,21 +1,44 @@
 const GET_USER_INFO = 'riot/GET_USER_INFO';
+const GET_MATCH_INFO = 'riot/GET_MATCH_INFO'
 
-const getMatches = (matches) => ({
+const getUserInfo = (matches) => ({
   type: GET_USER_INFO,
   payload: matches
 });
 
-const initialState = { summonerName: null, riotID: null, match_ids: null };
+const getMatchInfo = (matches) => ({
+  type: GET_MATCH_INFO,
+  payload: matches
+})
 
-export const getSummonerMatches = (gameName, tagLine) => async (dispatch) => {
+const initialState = { userProfile: null, match_ids: null, match_data: null };
+
+export const getSummonerInfo = (gameName, tagLine) => async (dispatch) => {
   const response = await fetch(`/api/riot/get_user_info/${gameName}/${tagLine}`);
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(getMatches(data));
+    return dispatch(getUserInfo(data));
   }
+
+  return response;
+};
+
+export const getMatches = (matchIds) => async (dispatch) => {
+  console.log("matchids", matchIds)
+  const response = await fetch(`/api/riot/get_match_info`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(matchIds)
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return dispatch(getMatchInfo(data))
+  }
+
+  return response
 }
-  ;
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -23,9 +46,13 @@ export default function reducer(state = initialState, action) {
       // return { ...state, matchIds: action.payload };
       return {
         ...state,
-        summonerName: action.payload.user_info.gameName,
-        riotID: action.payload.user_info.tagLine,
+        userProfile: action.payload.user_profile,
         match_ids: action.payload.match_ids
+      }
+    case GET_MATCH_INFO:
+      return {
+        ...state,
+        match_data: action.payload.matches
       }
     default:
       return state;

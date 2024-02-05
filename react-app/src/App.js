@@ -6,6 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SummonerSearch from "./components/SummonerSearch";
+import UserStats from "./components/UserStats";
+import PageNotFound from "./components/404";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,8 +27,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/" >
+          <Route exact path="/" >
             <SummonerSearch />
+          </Route>
+          <Route path="/user-stats/:gameName/:tagLine">
+            <UserStats />
+          </Route>
+          <Route path="*">
+            <PageNotFound />
           </Route>
         </Switch>
       )}
