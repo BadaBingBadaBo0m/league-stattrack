@@ -18,10 +18,10 @@ const MatchContainer = ({ matchData }) => {
   }
 
   const determineMatchOutcome = () => {
-    const currentUserPuuid = userInfo.puuid
-    const playerInfo = match.participants.find(particpant => currentUserPuuid === particpant.puuid)
+    const currentUserPuuid = userInfo.puuid;
+    const playerInfo = match.participants.find(particpant => currentUserPuuid === particpant.puuid);
 
-    return playerInfo.win
+    return playerInfo.win;
   }
 
   const determineTimeSinceMatch = () => {
@@ -39,6 +39,16 @@ const MatchContainer = ({ matchData }) => {
     }
   }
 
+  const determineMatchLength = () => {
+    const seconds = match.gameDuration
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+
+    const matchLength = `${hours ? `${hours}hr` : ""} ${minutes < 10 ? '0' : ''}${minutes}m ${secs < 10 ? '0' : ''}${secs}s`;
+    return matchLength;
+  }
+
   const determineQueueType = () => {
     const matchingQueue = queues.find(queue => match.queueId === queue.queueId);
     return matchingQueue ? matchingQueue.description : 'Queue not found';
@@ -54,6 +64,7 @@ const MatchContainer = ({ matchData }) => {
 
       <div className='match-outcome-and-length'>
         <div className='match-outcome'>{determineMatchOutcome() ? "Victory" : "Defeat"}</div>
+        <div>{determineMatchLength()}</div>
       </div>
 
       <ul className='match-player-list-container' >
