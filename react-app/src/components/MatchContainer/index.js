@@ -9,9 +9,20 @@ const MatchContainer = ({ match }) => {
     console.log(playerList)
   }
 
+  const printMatch = () => {
+    console.log(match)
+  }
+
+  const determinQueueType = () => {
+
+  }
+
   return (
     <div>
       <h1>match</h1>
+      <div className='match-type-and-length'>
+        <div className='match-type'>{determinQueueType}</div>
+      </div>
 
       <ul className='match-player-list-container' >
         {playerList.map(player => {
@@ -26,6 +37,7 @@ const MatchContainer = ({ match }) => {
       </ul>
 
       <button onClick={printPlayerList}>Print player list</button>
+      <button onClick={printMatch}>Print Match</button>
     </div>
   )
 };

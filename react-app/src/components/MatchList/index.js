@@ -1,5 +1,5 @@
 import React from 'react';
-import MatchContainer from '../../MatchContainer';
+import MatchContainer from '../MatchContainer';
 
 const MatchList = ({ matchData }) => {
 

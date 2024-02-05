@@ -61,13 +61,13 @@
   align-items: center;
 }
 
-.match-champ-portrait {
-  width: 1.2rem;
-}
-
 .match-player-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 85%;
+}
+
+.match-champ-portrait {
+  width: 1.2rem;
 }
