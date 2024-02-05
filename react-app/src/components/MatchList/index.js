@@ -9,7 +9,7 @@ const MatchList = ({ matchData }) => {
     <div>
       <h1>Match list</h1>
       {matchData.map(match => (
-        <MatchContainer match={match} />
+        <MatchContainer matchData={match} />
       ))}
     </div>
   )
