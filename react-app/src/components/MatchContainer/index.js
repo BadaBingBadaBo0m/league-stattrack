@@ -1,11 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import queues from '../../gameData/queues.json';
+import summoner from '../../gameData/summoner.json'
 import './MatchContainer.css';
 
 const MatchContainer = ({ matchData }) => {
   const userInfo = useSelector((state) => state.riot.userProfile);
   const match = matchData.info;
+  const playerInfo = match.participants.find(particpant => userInfo.puuid === particpant.puuid);
   const playerList = match.participants;
   let playerCount = 0;
 
@@ -15,13 +17,6 @@ const MatchContainer = ({ matchData }) => {
 
   const printMatch = () => {
     console.log(match)
-  }
-
-  const determineMatchOutcome = () => {
-    const currentUserPuuid = userInfo.puuid;
-    const playerInfo = match.participants.find(particpant => currentUserPuuid === particpant.puuid);
-
-    return playerInfo.win;
   }
 
   const determineTimeSinceMatch = () => {
@@ -54,24 +49,38 @@ const MatchContainer = ({ matchData }) => {
     return matchingQueue ? matchingQueue.description : 'Queue not found';
   }
 
+  const determineSummonerSpell = (summonerId) => {
+    const summonerSpellObj = Object.entries(summoner.data).find(spell => spell[1].key === `${summonerId}`)
+    return summonerSpellObj[0]
+  }
+
   return (
-    <div>
+    <div key={match.gameCreation}>
       <h1>match</h1>
+      <button onClick={e => console.log(playerInfo)}>PlayerInfo</button>
       <div className='match-type-and-length'>
         <div className='match-type'>{determineQueueType()}</div>
         <div className='time-since-match'>{determineTimeSinceMatch()}</div>
       </div>
 
       <div className='match-outcome-and-length'>
-        <div className='match-outcome'>{determineMatchOutcome() ? "Victory" : "Defeat"}</div>
+        <div className='match-outcome'>{playerInfo.win ? "Victory" : "Defeat"}</div>
         <div>{determineMatchLength()}</div>
+      </div>
+
+      <div className='match-player-stats'>
+        <div className='kda-container'>
+          <img className='match-kda-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${playerInfo.championName}.png`} />
+          <img className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
+          <img className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
+        </div>
       </div>
 
       <ul className='match-player-list-container' >
         {playerList.map(player => {
           playerCount++;
           return (
-            <li className={`lane_${playerCount} player-list-player`}>
+            <li key={`${player.puuid} ${player.champExperience}`} className={`lane_${playerCount} player-list-player`}>
               <img className='match-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${player.championName}.png`} />
               <span className='match-player-name'>{player.riotIdGameName}</span>
             </li>
