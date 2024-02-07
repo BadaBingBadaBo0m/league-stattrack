@@ -2,7 +2,7 @@
   {
     "id": 8100,
     "key": "Domination",
-    "icon": "perk-images/Styles/7200_Domination.png",
+    "icon": "Styles/7200_Domination.png",
     "name": "Domination",
     "slots": [
       {
@@ -138,7 +138,7 @@
   {
     "id": 8300,
     "key": "Inspiration",
-    "icon": "perk-images/Styles/7203_Whimsy.png",
+    "icon": "Styles/7203_Whimsy.png",
     "name": "Inspiration",
     "slots": [
       {
@@ -258,7 +258,7 @@
   {
     "id": 8000,
     "key": "Precision",
-    "icon": "perk-images/Styles/7201_Precision.png",
+    "icon": "Styles/7201_Precision.png",
     "name": "Precision",
     "slots": [
       {
@@ -386,7 +386,7 @@
   {
     "id": 8400,
     "key": "Resolve",
-    "icon": "perk-images/Styles/7204_Resolve.png",
+    "icon": "Styles/7204_Resolve.png",
     "name": "Resolve",
     "slots": [
       {
@@ -506,7 +506,7 @@
   {
     "id": 8200,
     "key": "Sorcery",
-    "icon": "perk-images/Styles/7202_Sorcery.png",
+    "icon": "Styles/7202_Sorcery.png",
     "name": "Sorcery",
     "slots": [
       {

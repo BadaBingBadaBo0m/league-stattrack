@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import queues from '../../gameData/queues.json';
-import summoner from '../../gameData/summoner.json'
+import summoner from '../../gameData/summoner.json';
+import runes from '../../gameData/runesReforged.json';
 import './MatchContainer.css';
 
 const MatchContainer = ({ matchData }) => {
@@ -9,6 +10,9 @@ const MatchContainer = ({ matchData }) => {
   const match = matchData.info;
   const playerInfo = match.participants.find(particpant => userInfo.puuid === particpant.puuid);
   const playerList = match.participants;
+  const primaryRunePage = runes.find(page => playerInfo.perks.styles[0].style === page.id)
+  const primaryRune = primaryRunePage.slots[0].runes.find(currentRune => playerInfo.perks.styles[0].selections[0].perk === currentRune.id)
+  const secondaryRunePage = runes.find(page => playerInfo.perks.styles[1].style === page.id)
   let playerCount = 0;
 
   const printPlayerList = () => {
@@ -71,8 +75,13 @@ const MatchContainer = ({ matchData }) => {
       <div className='match-player-stats'>
         <div className='kda-container'>
           <img className='match-kda-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${playerInfo.championName}.png`} />
-          <img className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
-          <img className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
+          <div className='match-summoner-spells-runes'>
+            <img className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
+            <img className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
+
+            <img src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`} />
+            <img src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
+          </div>
         </div>
       </div>
 
