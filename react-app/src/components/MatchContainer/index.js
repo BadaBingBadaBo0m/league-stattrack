@@ -74,13 +74,13 @@ const MatchContainer = ({ matchData }) => {
 
       <div className='match-player-stats'>
         <div className='kda-container'>
-          <img className='match-kda-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${playerInfo.championName}.png`} />
+          <img alt='champ-portrait' className='match-kda-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${playerInfo.championName}.png`} />
           <div className='match-summoner-spells-runes'>
-            <img className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
-            <img className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
+            <img alt='summoner-spell-1' className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
+            <img alt='summoner-spell-2' className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
 
-            <img src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`} />
-            <img src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
+            <img alt='rune-1' src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`} />
+            <img alt='run-2' src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@ const MatchContainer = ({ matchData }) => {
           playerCount++;
           return (
             <li key={`${player.puuid} ${player.champExperience}`} className={`lane_${playerCount} player-list-player`}>
-              <img className='match-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${player.championName}.png`} />
+              <img alt='champ=portrait-player-list' className='match-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${player.championName}.png`} />
               <span className='match-player-name'>{player.riotIdGameName}</span>
             </li>
           )
