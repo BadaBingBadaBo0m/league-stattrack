@@ -22,7 +22,7 @@ const UserStats = () => {
 
   if (!userInfo) return <div>Loading userInfo</div>
   if (!matchIds) return <div>Loading matchIds</div>
-  if (!matchData || !matchData.length) return <div>Loading matchData</div>
+  // if (!matchData || !matchData.length) return <div>Loading matchData</div>
 
   return (
     <section>

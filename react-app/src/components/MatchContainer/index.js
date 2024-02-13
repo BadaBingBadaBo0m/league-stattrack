@@ -112,8 +112,12 @@ const MatchContainer = ({ matchData }) => {
             <img alt='summoner-spell-1' className='match-kda-summoner-spell-1' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
             <img alt='summoner-spell-2' className='match-kda-summoner-spell-2' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
 
-            <img alt='rune-1' className='match-kda-rune-primary' src={determineIfLethalTempo()} />
-            <img alt='run-2' className='match-kda-rune-secondary' src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
+            <div className='match-kda-rune-container'>
+              <img alt='rune-1' className='match-kda-rune-primary' src={determineIfLethalTempo()} />
+            </div>
+            <div className='match-kda-rune-container'>
+              <img alt='run-2' className='match-kda-rune-secondary' src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
+            </div>
           </div>
 
           <div className='match-player-kda'>

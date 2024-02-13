@@ -122,11 +122,26 @@
 .match-kda-summoner-spell-1,
 .match-kda-summoner-spell-2 {
   width: 2rem;
+  border-radius: 5px;
+}
+
+.match-kda-rune-container {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  background-color: rgb(37, 34, 34);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2px;
 }
 
 .match-kda-rune-primary,
 .match-kda-rune-secondary {
-  width: 2rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  /* border-radius: 10%; */
+  /* background-color: rgb(41, 38, 38); */
 }
 
 .match-kda-champ-portrait {
@@ -147,7 +162,10 @@
 }
 
 .empty-item-slot {
-  background-color: rgb(160, 145, 145);
+  /* ORIGINAL COLOR */
+  /* background-color: rgb(160, 145, 145); */
+  /* DARKER VARIANT */
+  background-color: rgb(37, 34, 34);
   width: 2rem;
   height: 2rem;
   border-radius: 5px;
