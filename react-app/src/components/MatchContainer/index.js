@@ -6,6 +6,7 @@ import runes from '../../gameData/runesReforged.json';
 import './MatchContainer.css';
 
 const MatchContainer = ({ matchData }) => {
+  // const dragonVersion = process.env.REACT_APP_DATADRAGON_VERSION
   const userInfo = useSelector((state) => state.riot.userProfile);
   const match = matchData.info;
   const playerInfo = match.participants.find(particpant => userInfo.puuid === particpant.puuid);
@@ -15,13 +16,13 @@ const MatchContainer = ({ matchData }) => {
   const secondaryRunePage = runes.find(page => playerInfo.perks.styles[1].style === page.id)
   let playerCount = 0;
 
-  const printPlayerList = () => {
-    console.log(playerList)
-  }
+  // const printPlayerList = () => {
+  //   console.log(playerList)
+  // }
 
-  const printMatch = () => {
-    console.log(match)
-  }
+  // const printMatch = () => {
+  //   console.log(match)
+  // }
 
   const determineTimeSinceMatch = () => {
     const currentTimeStamp = Date.now();
@@ -73,6 +74,11 @@ const MatchContainer = ({ matchData }) => {
     return `${Math.floor(((playerInfo.kills + playerInfo.assists) / team.objectives.champion.kills) * 100)}%`
   }
 
+  const determineKDA = () => {
+    if (playerInfo.deaths === 0) return "Perfect"
+    return `${playerInfo.kills && playerInfo.deaths && playerInfo.assists ? ((playerInfo.kills + playerInfo.assists) / playerInfo.deaths).toFixed(2) : '0.00'} KDA`
+  }
+
   // The reason for this seamingly useless function is because Riot decided that LethalTempo's name should forever be LethalTempoTemp in DataDragon.
   // The only rune in the game that follows this naming convention
   const determineIfLethalTempo = () => {
@@ -111,7 +117,7 @@ const MatchContainer = ({ matchData }) => {
 
           <div className='match-player-kda'>
             <div>{`${playerInfo.kills} / ${playerInfo.deaths} / ${playerInfo.assists}`}</div>
-            <div>{`${playerInfo.kills && playerInfo.deaths && playerInfo.assists ? ((playerInfo.kills + playerInfo.assists) / playerInfo.deaths).toFixed(2) : `0.00`} KDA`}</div>
+            <div>{determineKDA()}</div>
             <div>{`P/Kill ${getKillParticipation()}`}</div>
             <div>{`CS ${playerInfo.totalMinionsKilled}`}</div>
           </div>
@@ -141,8 +147,8 @@ const MatchContainer = ({ matchData }) => {
         })}
       </ul>
 
-      {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button>
-      <button onClick={e => console.log(`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`)}>rune</button> */}
+      {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button> */}
+      {/* <button onClick={e => console.log(process.env)}>dataDragon</button> */}
       {/* <button onClick={printPlayerList}>Print player list</button> */}
       {/* <button onClick={printMatch}>Print Match</button>
       <button onClick={getKillParticipation}>KILL</button> */}
