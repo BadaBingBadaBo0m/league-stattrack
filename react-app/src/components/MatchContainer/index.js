@@ -73,6 +73,16 @@ const MatchContainer = ({ matchData }) => {
     return `${Math.floor(((playerInfo.kills + playerInfo.assists) / team.objectives.champion.kills) * 100)}%`
   }
 
+  // The reason for this seamingly useless function is because Riot decided that LethalTempo's name should forever be LethalTempoTemp in DataDragon.
+  // The only rune in the game that follows this naming convention
+  const determineIfLethalTempo = () => {
+    if (primaryRune.key === "LethalTempoTemp") {
+      return `https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/lethaltempo/${primaryRune.key.toLowerCase()}.png`
+    }
+
+    return `https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`
+  }
+
   return (
     <div key={match.gameCreation} className='match-container'>
       {/* <h1>match</h1> */}
@@ -95,7 +105,7 @@ const MatchContainer = ({ matchData }) => {
             <img alt='summoner-spell-1' className='match-kda-summoner-spell-1' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
             <img alt='summoner-spell-2' className='match-kda-summoner-spell-2' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
 
-            <img alt='rune-1' className='match-kda-rune-primary' src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`} />
+            <img alt='rune-1' className='match-kda-rune-primary' src={determineIfLethalTempo()} />
             <img alt='run-2' className='match-kda-rune-secondary' src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
           </div>
 
@@ -131,7 +141,8 @@ const MatchContainer = ({ matchData }) => {
         })}
       </ul>
 
-      {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button> */}
+      <button onClick={e => console.log(playerInfo)}>PlayerInfo</button>
+      <button onClick={e => console.log(`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`)}>rune</button>
       {/* <button onClick={printPlayerList}>Print player list</button> */}
       {/* <button onClick={printMatch}>Print Match</button>
       <button onClick={getKillParticipation}>KILL</button> */}

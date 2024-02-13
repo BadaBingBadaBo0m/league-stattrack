@@ -273,7 +273,7 @@
           },
           {
             "id": 8008,
-            "key": "LethalTempo",
+            "key": "LethalTempoTemp",
             "icon": "perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png",
             "name": "Lethal Tempo",
             "shortDesc": "Gain Attack Speed when attacking an enemy champion, stacking up to 6 times. At max stacks, gain Attack Range and remove your Attack Speed limit.",

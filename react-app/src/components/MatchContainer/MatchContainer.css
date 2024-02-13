@@ -129,6 +129,7 @@
 .match-kda-champ-portrait {
   border-radius: 50%;
   width: 4rem;
+  height: 4rem;
 }
 
 .match-player-items {
