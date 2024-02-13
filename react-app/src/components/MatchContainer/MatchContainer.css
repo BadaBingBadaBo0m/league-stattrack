@@ -4,6 +4,10 @@
   gap: 2rem;
 }
 
+.match-game-stats {
+  width: 10rem;
+}
+
 .match-player-list-container {
   width: 21.5rem;
   display: grid;
@@ -125,4 +129,21 @@
 .match-kda-champ-portrait {
   border-radius: 50%;
   width: 4rem;
+}
+
+.match-player-items {
+  display: flex;
+  margin-top: .7rem;
+}
+
+.item-img {
+  width: 2rem;
+  border-radius: 5px;
+}
+
+.empty-item-slot {
+  background-color: gray;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
 }

@@ -58,10 +58,17 @@ const MatchContainer = ({ matchData }) => {
     return summonerSpellObj[0]
   }
 
+  const getItemImageIfExists = (item) => {
+    if (item === 0) {
+      return <div className='empty-item-slot'></div>
+    }
+
+    return <img className='item-img' src={`/dragontail-14.2.1/14.2.1/img/item/${item}.png`} />
+  }
+
   return (
     <div key={match.gameCreation} className='match-container'>
       {/* <h1>match</h1> */}
-      {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button> */}
       <div className='match-game-stats'>
         <div className='match-type-and-length'>
           <div className='match-type'>{determineQueueType()}</div>
@@ -84,6 +91,21 @@ const MatchContainer = ({ matchData }) => {
             <img alt='rune-1' className='match-kda-rune-primary' src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`} />
             <img alt='run-2' className='match-kda-rune-secondary' src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
           </div>
+
+          <div className='match-player-kda'>
+            <div>{`${playerInfo.kills} / ${playerInfo.deaths} / ${playerInfo.assists}`}</div>
+            <div>{`${playerInfo.kills && playerInfo.deaths && playerInfo.assists ? ((playerInfo.kills + playerInfo.assists) / playerInfo.deaths).toFixed(2) : `0.00`} KDA`}</div>
+          </div>
+        </div>
+
+        <div className='match-player-items'>
+          {getItemImageIfExists(playerInfo.item0)}
+          {getItemImageIfExists(playerInfo.item1)}
+          {getItemImageIfExists(playerInfo.item2)}
+          {getItemImageIfExists(playerInfo.item3)}
+          {getItemImageIfExists(playerInfo.item4)}
+          {getItemImageIfExists(playerInfo.item5)}
+          {getItemImageIfExists(playerInfo.item6)}
         </div>
       </div>
 
@@ -100,8 +122,9 @@ const MatchContainer = ({ matchData }) => {
         })}
       </ul>
 
+      <button onClick={e => console.log(playerInfo)}>PlayerInfo</button>
       {/* <button onClick={printPlayerList}>Print player list</button> */}
-      <button onClick={printMatch}>Print Match</button>
+      {/* <button onClick={printMatch}>Print Match</button> */}
     </div>
   )
 };
