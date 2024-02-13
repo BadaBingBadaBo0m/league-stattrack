@@ -139,11 +139,13 @@
 .item-img {
   width: 2rem;
   border-radius: 5px;
+  margin: .05rem;
 }
 
 .empty-item-slot {
-  background-color: gray;
+  background-color: rgb(160, 145, 145);
   width: 2rem;
   height: 2rem;
   border-radius: 5px;
+  margin: .05rem;
 }

@@ -66,6 +66,13 @@ const MatchContainer = ({ matchData }) => {
     return <img className='item-img' src={`/dragontail-14.2.1/14.2.1/img/item/${item}.png`} />
   }
 
+  const getKillParticipation = () => {
+    const teamId = playerInfo.teamId;
+    const team = match.teams[teamId === 100 ? 0 : 1]
+
+    return `${Math.floor(((playerInfo.kills + playerInfo.assists) / team.objectives.champion.kills) * 100)}%`
+  }
+
   return (
     <div key={match.gameCreation} className='match-container'>
       {/* <h1>match</h1> */}
@@ -95,6 +102,8 @@ const MatchContainer = ({ matchData }) => {
           <div className='match-player-kda'>
             <div>{`${playerInfo.kills} / ${playerInfo.deaths} / ${playerInfo.assists}`}</div>
             <div>{`${playerInfo.kills && playerInfo.deaths && playerInfo.assists ? ((playerInfo.kills + playerInfo.assists) / playerInfo.deaths).toFixed(2) : `0.00`} KDA`}</div>
+            <div>{`P/Kill ${getKillParticipation()}`}</div>
+            <div>{`CS ${playerInfo.totalMinionsKilled}`}</div>
           </div>
         </div>
 
@@ -122,9 +131,10 @@ const MatchContainer = ({ matchData }) => {
         })}
       </ul>
 
-      <button onClick={e => console.log(playerInfo)}>PlayerInfo</button>
+      {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button> */}
       {/* <button onClick={printPlayerList}>Print player list</button> */}
-      {/* <button onClick={printMatch}>Print Match</button> */}
+      {/* <button onClick={printMatch}>Print Match</button>
+      <button onClick={getKillParticipation}>KILL</button> */}
     </div>
   )
 };
