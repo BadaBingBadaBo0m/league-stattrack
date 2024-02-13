@@ -16,6 +16,8 @@ const MatchContainer = ({ matchData }) => {
   const secondaryRunePage = runes.find(page => playerInfo.perks.styles[1].style === page.id)
   let playerCount = 0;
 
+  if (!match) return <div>Loading</div>
+
   // const printPlayerList = () => {
   //   console.log(playerList)
   // }
@@ -90,8 +92,7 @@ const MatchContainer = ({ matchData }) => {
   }
 
   return (
-    <div key={match.gameCreation} className='match-container'>
-      {/* <h1>match</h1> */}
+    <div key={match.gameCreation} className='match-container' style={{ backgroundColor: playerInfo.win ? "#4d97e2" : "#E84057" }}>
       <div className='match-game-stats'>
         <div className='match-type-and-length'>
           <div className='match-type'>{determineQueueType()}</div>
