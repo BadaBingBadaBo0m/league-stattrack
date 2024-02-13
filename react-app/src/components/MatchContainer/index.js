@@ -141,8 +141,8 @@ const MatchContainer = ({ matchData }) => {
         })}
       </ul>
 
-      <button onClick={e => console.log(playerInfo)}>PlayerInfo</button>
-      <button onClick={e => console.log(`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`)}>rune</button>
+      {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button>
+      <button onClick={e => console.log(`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`)}>rune</button> */}
       {/* <button onClick={printPlayerList}>Print player list</button> */}
       {/* <button onClick={printMatch}>Print Match</button>
       <button onClick={getKillParticipation}>KILL</button> */}
