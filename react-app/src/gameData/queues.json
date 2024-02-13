@@ -230,7 +230,7 @@
   {
     "queueId": 318,
     "map": "Summoner's Rift",
-    "description": "ARURF games",
+    "description": "ARURF",
     "notes": "Deprecated in patch 7.19 in favor of queueId 900"
   },
   {
@@ -500,7 +500,7 @@
   {
     "queueId": 1900,
     "map": "Summoner's Rift",
-    "description": "Pick URF games",
+    "description": "URF",
     "notes": null
   },
   {

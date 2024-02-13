@@ -1,3 +1,9 @@
+.match-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .match-player-list-container {
   width: 21.5rem;
   display: grid;
@@ -70,6 +76,50 @@
 
 .match-champ-portrait {
   width: 1.2rem;
+}
+
+.kda-container {
+  width: max-content;
+  display: flex;
+  gap: .7rem;
+}
+
+.match-summoner-spells-runes {
+  display: grid;
+  grid-auto-flow: row dense;
+  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0px 0px;
+  grid-template-areas:
+    "summoner-1 primary-rune"
+    "summoner-2 secondary-rune";
+}
+
+.match-kda-summoner-spell-1 {
+  grid-area: summoner-1;
+}
+
+.match-kda-summoner-spell-2 {
+  grid-area: summoner-2;
+}
+
+.match-kda-rune-primary {
+  grid-area: primary-rune;
+}
+
+.match-kda-rune-secondary {
+  grid-area: secondary-rune;
+}
+
+.match-kda-summoner-spell-1,
+.match-kda-summoner-spell-2 {
+  width: 2rem;
+}
+
+.match-kda-rune-primary,
+.match-kda-rune-secondary {
+  width: 2rem;
 }
 
 .match-kda-champ-portrait {

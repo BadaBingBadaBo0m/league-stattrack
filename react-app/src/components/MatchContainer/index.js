@@ -59,28 +59,30 @@ const MatchContainer = ({ matchData }) => {
   }
 
   return (
-    <div key={match.gameCreation}>
-      <h1>match</h1>
-      <button onClick={e => console.log(playerInfo)}>PlayerInfo</button>
-      <div className='match-type-and-length'>
-        <div className='match-type'>{determineQueueType()}</div>
-        <div className='time-since-match'>{determineTimeSinceMatch()}</div>
-      </div>
+    <div key={match.gameCreation} className='match-container'>
+      {/* <h1>match</h1> */}
+      {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button> */}
+      <div className='match-game-stats'>
+        <div className='match-type-and-length'>
+          <div className='match-type'>{determineQueueType()}</div>
+          <div className='time-since-match'>{determineTimeSinceMatch()}</div>
+        </div>
 
-      <div className='match-outcome-and-length'>
-        <div className='match-outcome'>{playerInfo.win ? "Victory" : "Defeat"}</div>
-        <div>{determineMatchLength()}</div>
+        <div className='match-outcome-and-length'>
+          <div className='match-outcome'>{playerInfo.win ? "Victory" : "Defeat"}</div>
+          <div>{determineMatchLength()}</div>
+        </div>
       </div>
 
       <div className='match-player-stats'>
         <div className='kda-container'>
           <img alt='champ-portrait' className='match-kda-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${playerInfo.championName}.png`} />
           <div className='match-summoner-spells-runes'>
-            <img alt='summoner-spell-1' className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
-            <img alt='summoner-spell-2' className='match-kda-summoner-spell' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
+            <img alt='summoner-spell-1' className='match-kda-summoner-spell-1' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
+            <img alt='summoner-spell-2' className='match-kda-summoner-spell-2' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
 
-            <img alt='rune-1' src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`} />
-            <img alt='run-2' src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
+            <img alt='rune-1' className='match-kda-rune-primary' src={`https://raw.communitydragon.org/latest/game/assets/perks/styles/${primaryRunePage.key.toLowerCase()}/${primaryRune.key.toLowerCase()}/${primaryRune.key.toLowerCase()}.png`} />
+            <img alt='run-2' className='match-kda-rune-secondary' src={`https://raw.communitydragon.org/latest/game/assets/perks/${secondaryRunePage.icon.toLowerCase()}`} />
           </div>
         </div>
       </div>
@@ -90,14 +92,15 @@ const MatchContainer = ({ matchData }) => {
           playerCount++;
           return (
             <li key={`${player.puuid} ${player.champExperience}`} className={`lane_${playerCount} player-list-player`}>
-              <img alt='champ=portrait-player-list' className='match-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${player.championName}.png`} />
+              {/* The reason for the Fiddlesticks acception is because Riot hates us all. */}
+              <img alt='champ=portrait-player-list' className='match-champ-portrait' src={`/dragontail-14.2.1/14.2.1/img/champion/${player.championName === 'FiddleSticks' ? 'Fiddlesticks' : player.championName}.png`} />
               <span className='match-player-name'>{player.riotIdGameName}</span>
             </li>
           )
         })}
       </ul>
 
-      <button onClick={printPlayerList}>Print player list</button>
+      {/* <button onClick={printPlayerList}>Print player list</button> */}
       <button onClick={printMatch}>Print Match</button>
     </div>
   )
