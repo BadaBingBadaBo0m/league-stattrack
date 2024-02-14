@@ -27,6 +27,14 @@ def get_user_puuid(gameName, tagLine):
 
   return user_info.json()
 
+def get_user_rank(summoner_id):
+  user_rank = get(f"https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/{summoner_id}", 
+    headers={
+      "X-Riot-Token": RIOT_API_KEY
+    })
+  
+  return user_rank.json()
+
 def get_match_history_ids(puuid):
   match_ids = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=20",
     headers={
