@@ -14,7 +14,7 @@ const UserStats = () => {
   const dispatch = useDispatch();
 
 
-  useEffect(async () => {
+  useEffect(() => async () => {
     if (!userInfo) {
       await dispatch(getSummonerInfo(gameName, tagLine))
     }

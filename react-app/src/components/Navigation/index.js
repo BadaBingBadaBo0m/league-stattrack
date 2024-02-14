@@ -6,9 +6,6 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
-	const url = window.location.href;
-
-	if (url === 'http://localhost:3000/') return null;
 
 	return (
 		<div>
@@ -23,7 +20,6 @@ function Navigation({ isLoaded }) {
 					</li>
 				)}
 			</ul>
-			<button onClick={e => console.log(url)}>test</button>
 		</div>
 	);
 }

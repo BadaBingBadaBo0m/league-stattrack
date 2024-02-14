@@ -62,7 +62,7 @@ def get_match_info():
   })
     
     match_info = match_info_response.json()
-    print(match_info)
+
     if 'status' in match_info:
       print("RATE LIMIT EXCEDED ASKLDFHDASKLHFKSALDJFHASLKJFHSLAK")
       return {"error": "Rate limit exceded please retry in one minute", "status_code": 510}, 510
