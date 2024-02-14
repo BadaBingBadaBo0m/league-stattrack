@@ -28,11 +28,13 @@ const MatchContainer = ({ matchData }) => {
 
   const determineTimeSinceMatch = () => {
     const currentTimeStamp = Date.now();
-    const timeDifference = currentTimeStamp - match.gameEndTimestamp
+    const timeDifference = currentTimeStamp - match.gameEndTimestamp;
     const hoursAgo = Math.floor(timeDifference / (1000 * 60 * 60));
+    const secondsAgo = Math.floor(timeDifference / 1000);
+    const minutesAgo = Math.floor(secondsAgo / 60);
 
     if (hoursAgo < 1) {
-      return "Less than an hour ago";
+      return `${minutesAgo} minute${minutesAgo === 1 ? '' : 's'} ago`;
     } else if (hoursAgo < 24) {
       return `${hoursAgo} hours ago`;
     } else {
