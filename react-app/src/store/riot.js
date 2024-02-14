@@ -37,7 +37,7 @@ export const getMatches = (matchIds) => async (dispatch) => {
     return dispatch(getMatchInfo(data))
   }
 
-  return response
+  return response.json()
 }
 
 export default function reducer(state = initialState, action) {

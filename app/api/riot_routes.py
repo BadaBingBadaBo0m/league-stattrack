@@ -56,12 +56,18 @@ def get_match_info():
   # matches.append(match_info.json())
 
   for match in match_list:
-    match_info = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match}",
+    match_info_response = get(f"https://americas.api.riotgames.com/lol/match/v5/matches/{match}",
     headers={
     "X-Riot-Token": RIOT_API_KEY
   })
     
-    matches.append(match_info.json())
+    match_info = match_info_response.json()
+    print(match_info)
+    if 'status' in match_info:
+      print("RATE LIMIT EXCEDED ASKLDFHDASKLHFKSALDJFHASLKJFHSLAK")
+      return {"error": "Rate limit exceded please retry in one minute", "status_code": 510}, 510
+    
+    matches.append(match_info)
 
   return { "matches": matches }
 

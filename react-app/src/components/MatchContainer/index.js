@@ -7,6 +7,7 @@ import './MatchContainer.css';
 
 const MatchContainer = ({ matchData }) => {
   // const dragonVersion = process.env.REACT_APP_DATADRAGON_VERSION
+  // console.log("BRUHFLAS;DJFL;SAF", matchData.info.participants)
   const userInfo = useSelector((state) => state.riot.userProfile);
   const match = matchData.info;
   const playerInfo = match.participants.find(particpant => userInfo.puuid === particpant.puuid);
@@ -159,8 +160,8 @@ const MatchContainer = ({ matchData }) => {
       {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button> */}
       {/* <button onClick={e => console.log(process.env)}>dataDragon</button> */}
       {/* <button onClick={printPlayerList}>Print player list</button> */}
-      {/* <button onClick={printMatch}>Print Match</button>
-      <button onClick={getKillParticipation}>KILL</button> */}
+      {/* <button onClick={printMatch}>Print Match</button> */}
+      {/* <button onClick={getKillParticipation}>KILL</button> */}
     </div>
   )
 };

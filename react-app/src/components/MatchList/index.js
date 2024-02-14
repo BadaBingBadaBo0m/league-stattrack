@@ -1,9 +1,11 @@
 import React from 'react';
 import MatchContainer from '../MatchContainer';
 
-const MatchList = ({ matchData }) => {
+const MatchList = ({ matchData, errors }) => {
 
-  if (!matchData) return <h1>Loading</h1>
+  // if (!matchData) return <h1>Loading</h1>
+  if (errors?.error) return <div>{errors.error}</div>
+  if (!matchData || !matchData.length) return <div>Loading matchData</div>
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getMatches, getSummonerInfo } from '../../store/riot';
 import { useParams } from 'react-router-dom'
@@ -8,18 +8,27 @@ const UserStats = () => {
   const userInfo = useSelector((state) => state.riot.userProfile);
   const matchIds = useSelector((state) => state.riot.match_ids);
   const matchData = useSelector((state) => state.riot.match_data);
+  const [errors, setErrors] = useState({})
   const { gameName } = useParams();
   const { tagLine } = useParams();
   const dispatch = useDispatch();
 
-  if (!userInfo) {
-    dispatch(getSummonerInfo(gameName, tagLine))
-  }
 
-  useEffect(() => {
-    dispatch(getMatches(matchIds));
+  useEffect(async () => {
+    if (!userInfo) {
+      await dispatch(getSummonerInfo(gameName, tagLine))
+    }
+
+    const res = await dispatch(getMatches(matchIds));
+
+    // console.log("asfkjhaskljfhlsdfafsdl", res)
+
+    if (res.error) {
+      setErrors(res)
+    }
   }, [userInfo])
 
+  // if (errors) return <div>{errors.error}</div>
   if (!userInfo) return <div>Loading userInfo</div>
   if (!matchIds) return <div>Loading matchIds</div>
   // if (!matchData || !matchData.length) return <div>Loading matchData</div>
@@ -35,7 +44,7 @@ const UserStats = () => {
       {/* <button onClick={e => console.log(gameName)}>test</button> */}
 
       <div id='match-list-container'>
-        <MatchList matchData={matchData} />
+        <MatchList matchData={matchData} errors={errors} />
       </div>
 
     </section>
