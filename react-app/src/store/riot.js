@@ -11,7 +11,7 @@ const getMatchInfo = (matches) => ({
   payload: matches
 })
 
-const initialState = { userProfile: null, match_ids: null, match_data: null };
+const initialState = { userProfile: null, userRank: null, match_ids: null, match_data: null };
 
 export const getSummonerInfo = (gameName, tagLine) => async (dispatch) => {
   console.log("getSummonerInfo Dispatched")
@@ -48,7 +48,8 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         userProfile: action.payload.user_profile,
-        match_ids: action.payload.match_ids
+        match_ids: action.payload.match_ids,
+        userRank: action.payload.user_rank
       }
     case GET_MATCH_INFO:
       return {
