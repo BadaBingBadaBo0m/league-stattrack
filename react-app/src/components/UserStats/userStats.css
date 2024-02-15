@@ -1,0 +1,46 @@
+#user-stats-banner {
+  background-color: #3f78b1;
+  padding: 1rem 1rem;
+}
+
+#user-stats-username-pfp-lvl {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#user-stats-pfp-lvl-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+#user-stats-pfp {
+  border-radius: 30px;
+  width: 8rem;
+  height: 8rem;
+  border: 3px solid rgb(168, 168, 168);
+}
+
+#user-stats-lvl {
+  background-color: #3f78b1;
+  color: black;
+  width: fit-content;
+  padding: .3rem;
+  border-radius: 60%;
+  margin-top: -1rem;
+  border: 2px solid rgb(168, 168, 168);
+}
+
+#user-stats-username {
+  color: white;
+  width: fit-content;
+  margin-bottom: .2rem;
+}
+
+#user-stats-username-tagline {
+  color: rgb(143, 143, 143);
+  font-size: 1rem;
+}

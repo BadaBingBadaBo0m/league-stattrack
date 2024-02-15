@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMatches, getSummonerInfo } from '../../store/riot';
 import { useParams } from 'react-router-dom'
 import MatchList from '../MatchList';
+import './userStats.css'
 
 const UserStats = () => {
   const userInfo = useSelector((state) => state.riot.userProfile);
@@ -44,10 +45,15 @@ const UserStats = () => {
 
   return (
     <section>
-      <div>
-        <img src={`/dragontail-14.2.1/14.2.1/img/profileicon/${userInfo.profileIconId}.png`} />
-        <span>lvl {userInfo.summonerLevel}</span>
-        <h1>{userInfo.name}</h1>
+      <div id='user-stats-banner'>
+        <div id='user-stats-username-pfp-lvl'>
+          <div id='user-stats-pfp-lvl-container'>
+            <img id='user-stats-pfp' src={`/dragontail-14.2.1/14.2.1/img/profileicon/${userInfo.profileIconId}.png`} />
+            <div id='user-stats-lvl'>{userInfo.summonerLevel}</div>
+          </div>
+          <h1 id='user-stats-username'>{userInfo.name}</h1>
+          <span id='user-stats-username-tagline'>#{tagLine.toUpperCase()}</span>
+        </div>
       </div>
 
       {/* <button onClick={e => console.log(gameName)}>test</button> */}
