@@ -14,6 +14,7 @@ const getMatchInfo = (matches) => ({
 const initialState = { userProfile: null, match_ids: null, match_data: null };
 
 export const getSummonerInfo = (gameName, tagLine) => async (dispatch) => {
+  console.log("getSummonerInfo Dispatched")
   const response = await fetch(`/api/riot/get_user_info/${gameName}/${tagLine}`);
 
   if (response.ok) {
@@ -25,7 +26,7 @@ export const getSummonerInfo = (gameName, tagLine) => async (dispatch) => {
 };
 
 export const getMatches = (matchIds) => async (dispatch) => {
-  console.log("matchids", matchIds)
+  console.log("getMatches Dispatched")
   const response = await fetch(`/api/riot/get_match_info`, {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },

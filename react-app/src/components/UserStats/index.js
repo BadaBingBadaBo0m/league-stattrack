@@ -14,18 +14,27 @@ const UserStats = () => {
   const dispatch = useDispatch();
 
 
-  useEffect(() => async () => {
+  useEffect(() => {
+    const fetchSummonerInfo = async () => {
+      await dispatch(getSummonerInfo(gameName, tagLine));
+    };
+
     if (!userInfo) {
-      await dispatch(getSummonerInfo(gameName, tagLine))
+      console.log("fetching match data")
+      fetchSummonerInfo();
     }
 
-    const res = await dispatch(getMatches(matchIds));
+    const getSummonerMatches = async () => {
+      const res = await dispatch(getMatches(matchIds));
+      if (res.error) {
+        setErrors(res)
+      }
+    };
+
+    getSummonerMatches();
 
     // console.log("asfkjhaskljfhlsdfafsdl", res)
 
-    if (res.error) {
-      setErrors(res)
-    }
   }, [userInfo])
 
   // if (errors) return <div>{errors.error}</div>

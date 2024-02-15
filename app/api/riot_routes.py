@@ -11,8 +11,13 @@ def get_user_profile(gameName, tagLine):
     headers={
       "X-Riot-Token": RIOT_API_KEY
     })
+    
+  user_info = user_info.json()
+  
+  if 'status' in user_info:
+    return user_info
 
-  user_profile = get(f"https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{user_info.json()['puuid']}", 
+  user_profile = get(f"https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{user_info['puuid']}", 
     headers={
       "X-Riot-Token": RIOT_API_KEY
     })
@@ -71,9 +76,9 @@ def get_match_info():
     
     match_info = match_info_response.json()
 
-    if 'status' in match_info:
-      print("RATE LIMIT EXCEDED ASKLDFHDASKLHFKSALDJFHASLKJFHSLAK")
-      return {"error": "Rate limit exceded please retry in one minute", "status_code": 510}, 510
+    # if 'status' in match_info:
+    #   print("RATE LIMIT EXCEDED ASKLDFHDASKLHFKSALDJFHASLKJFHSLAK")
+    #   return {"error": match_info['status']['message'], "status_code": match_info['status']['status_code']}, match_info['status']['status_code']
     
     matches.append(match_info)
 
@@ -82,7 +87,12 @@ def get_match_info():
 @riot_routes.route('/get_user_info/<string:gameName>/<string:tagLine>')
 def get_user_info(gameName, tagLine):
   user_profile = get_user_profile(gameName, tagLine)
+
+  if 'status' in user_profile:
+    return {"error": user_profile['status']['message']}, user_profile['status']['status_code']
+  
   match_ids = get_match_history_ids(user_profile['puuid'])
+  user_rank = get_user_rank(user_profile['id'])
   # match_info = get_match_info(match_ids)
 
-  return {"user_profile": user_profile, "match_ids": match_ids}
+  return {"user_profile": user_profile, "user_rank": user_rank, "match_ids": match_ids}
