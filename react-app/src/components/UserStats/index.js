@@ -9,11 +9,14 @@ const UserStats = () => {
   const userInfo = useSelector((state) => state.riot.userProfile);
   const matchIds = useSelector((state) => state.riot.match_ids);
   const matchData = useSelector((state) => state.riot.match_data);
-  const [errors, setErrors] = useState({})
+  const userRankArr = useSelector((state) => state.riot.userRank);
+  let userRank = null;
+  const [errors, setErrors] = useState({});
   const { gameName } = useParams();
   const { tagLine } = useParams();
   const dispatch = useDispatch();
 
+  if (userRankArr && userRankArr.length > 0) userRank = userRankArr.find(rank => rank.queueType === "RANKED_SOLO_5x5");
 
   useEffect(() => {
     const fetchSummonerInfo = async () => {
@@ -38,6 +41,10 @@ const UserStats = () => {
 
   }, [userInfo])
 
+  const correctRankCaps = (rank) => {
+    return rank.slice(0, 1) + rank.slice(1).toLowerCase()
+  }
+
   // if (errors) return <div>{errors.error}</div>
   if (!userInfo) return <div>Loading userInfo</div>
   if (!matchIds) return <div>Loading matchIds</div>
@@ -56,7 +63,10 @@ const UserStats = () => {
         </div>
 
         <div id='user-stats-rank-info-container'>
-
+          <div>
+            <img id='player-rank-emblem' alt={`player-rank-${userRank.tier}`} src={`/Ranked-Emblems-Latest/Rank=${correctRankCaps(userRank.tier)}.png`} />
+            <button onClick={e => console.log(userRank)}>rank</button>
+          </div>
         </div>
       </div>
 

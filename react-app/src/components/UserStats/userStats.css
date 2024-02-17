@@ -44,3 +44,7 @@
   color: rgb(143, 143, 143);
   font-size: 1rem;
 }
+
+#player-rank-emblem {
+  width: 15rem;
+}
