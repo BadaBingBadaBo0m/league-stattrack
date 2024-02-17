@@ -69,7 +69,7 @@ const MatchContainer = ({ matchData }) => {
       return <div className='empty-item-slot'></div>
     }
 
-    return <img className='item-img' src={`/dragontail-14.2.1/14.2.1/img/item/${item}.png`} />
+    return <img className='item-img' alt={`item-${item}`} src={`/dragontail-14.2.1/14.2.1/img/item/${item}.png`} />
   }
 
   const getKillParticipation = () => {
