@@ -6,8 +6,6 @@ import runes from '../../gameData/runesReforged.json';
 import './MatchContainer.css';
 
 const MatchContainer = ({ matchData }) => {
-  // const dragonVersion = process.env.REACT_APP_DATADRAGON_VERSION
-  // console.log("BRUHFLAS;DJFL;SAF", matchData.info.participants)
   const userInfo = useSelector((state) => state.riot.userProfile);
   const match = matchData.info;
   const playerInfo = match.participants.find(particpant => userInfo.puuid === particpant.puuid);
