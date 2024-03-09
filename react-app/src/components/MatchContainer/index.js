@@ -156,9 +156,6 @@ const MatchContainer = ({ matchData }) => {
           )
         })}
       </ul>
-
-      {/* <button onClick={e => console.log(playerInfo)}>PlayerInfo</button> */}
-      {/* <button onClick={e => console.log(process.env)}>dataDragon</button> */}
     </div>
   )
 };
