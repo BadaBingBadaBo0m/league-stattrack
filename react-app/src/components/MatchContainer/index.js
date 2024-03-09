@@ -19,14 +19,6 @@ const MatchContainer = ({ matchData }) => {
 
   if (!match) return <div>Loading</div>
 
-  // const printPlayerList = () => {
-  //   console.log(playerList)
-  // }
-
-  // const printMatch = () => {
-  //   console.log(match)
-  // }
-
   const determineTimeSinceMatch = () => {
     const currentTimeStamp = Date.now();
     const timeDifference = currentTimeStamp - match.gameEndTimestamp;
