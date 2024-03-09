@@ -87,6 +87,5 @@ def get_user_info(gameName, tagLine):
   
   match_ids = get_match_history_ids(user_profile['puuid'])
   user_rank = get_user_rank(user_profile['id'])
-  # match_info = get_match_info(match_ids)
 
   return {"user_profile": user_profile, "user_rank": user_rank, "match_ids": match_ids}
