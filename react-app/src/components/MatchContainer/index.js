@@ -105,6 +105,7 @@ const MatchContainer = ({ matchData }) => {
           </div>
           <div className='match-summoner-spells-runes'>
             <img alt='summoner-spell-1' className='match-kda-summoner-spell-1' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner1Id)}.png`} />
+            <button onClick={e => console.log(playerInfo.summoner1Id)}>test</button>
             <img alt='summoner-spell-2' className='match-kda-summoner-spell-2' src={`/dragontail-14.2.1/14.2.1/img/spell/${determineSummonerSpell(playerInfo.summoner2Id)}.png`} />
 
             <div className='match-kda-rune-container'>
