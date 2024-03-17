@@ -80,7 +80,6 @@ def get_match_info():
 
 @riot_routes.route('/get_user_info/<string:gameName>/<string:tagLine>')
 def get_user_info(gameName, tagLine):
-  print("asfsajfl;safhfsla;fj")
   user_profile = get_user_profile(gameName, tagLine)
 
   if 'status' in user_profile:
