@@ -46,7 +46,6 @@ const SummonerSearch = () => {
 
   return (
     <form>
-
       <label>Username {errors.gameName && <span className='errors'>{errors.gameName}</span>}</label>
       <input
         className='summoner-search-input'
@@ -55,7 +54,6 @@ const SummonerSearch = () => {
         value={gameName}
         onChange={(e) => setGameName(e.target.value)}
       />
-
       <label>RiotID {errors.tagLine && <span className='errors'>{errors.tagLine}</span>}</label>
       <input
         className='riotID-input'
@@ -64,7 +62,6 @@ const SummonerSearch = () => {
         placeholer="#0000"
         onChange={(e) => setTagLine(e.target.value)}
       />
-
       <button id='summoner-search-button' type='submit' onClick={handleSubmit} >Search</button>
     </form>
   )
