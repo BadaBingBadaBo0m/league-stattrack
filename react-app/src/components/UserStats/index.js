@@ -61,7 +61,6 @@ const UserStats = () => {
           <h1 id='user-stats-username'>{userInfo.name}</h1>
           <span id='user-stats-username-tagline'>#{tagLine.toUpperCase()}</span>
         </div>
-
         <div id='user-stats-rank-info-container'>
           <div>
             <img id='player-rank-emblem' alt={`player-rank-${userRank.tier}`} src={`/Ranked-Emblems-Latest/Rank=${correctRankCaps(userRank.tier)}.png`} />
@@ -69,13 +68,10 @@ const UserStats = () => {
           </div>
         </div>
       </div>
-
       {/* <button onClick={e => console.log(gameName)}>test</button> */}
-
       <div id='match-list-container'>
         <MatchList matchData={matchData} errors={errors} />
       </div>
-
     </section>
   )
 };
